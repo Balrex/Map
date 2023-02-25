@@ -97,6 +97,24 @@ public class Map<T1 extends Comparable<T1>, T2> implements Comparable<T1> {
         }
     }
 
+    //изменение значения по ключу
+    public void ChandeEl (T1 key, T2 data){
+        node tmp_node = head;
+        boolean marker = true;
+        do{
+            if (key.compareTo((T1) tmp_node.key)<0 && tmp_node.left != null)
+                tmp_node = tmp_node.left;
+            else if (key.compareTo((T1) tmp_node.key)>0 && tmp_node.right != null)
+                tmp_node = tmp_node.right;
+            else
+                marker = false;
+        }while (marker);
+        if (key.compareTo((T1) tmp_node.key)==0)
+            tmp_node.data=data;
+        else
+            System.out.println("Значения с ключом - "+key+" - нет в дереве!");
+    }
+
     public void Size(){
         System.out.println("Элементов в дереве: "+count);
     }
